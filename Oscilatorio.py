@@ -138,7 +138,15 @@ class Ui_MainWindow_modificada(Ui_MainWindow):
         aboutAction.setShortcut('Ctrl+U')
         aboutAction.setStatusTip('Informacion general sobre el uso del programa')
         aboutAction.triggered.connect(self.menu_uso)
+        creditosAction = QtGui.QAction('Creditos',self.infoMenu)
+        creditosAction.setStatusTip('Información acerca del desarrollo del programa')
+        creditosAction.triggered.connect(self.menu_creditos)
+        tecnicoAction = QtGui.QAction('Detalles tecnicos',self.infoMenu)
+        tecnicoAction.setStatusTip(u'Detalle tecnicos de la programación y como ejecutar el programa')
+        tecnicoAction.triggered.connect(self.menu_tecnico)
         self.infoMenu.addAction(aboutAction)  
+        self.infoMenu.addAction(creditosAction)
+        self.infoMenu.addAction(tecnicoAction)
         self.infoMenu.addAction(exitAction)
 
         # Agrega opciones a combo grafico secundario
@@ -1045,25 +1053,63 @@ class Ui_MainWindow_modificada(Ui_MainWindow):
         QtGui.QMessageBox.about(None, 'Como usar el programa', texto)
     
     def menu_creditos(self):
-        texto = (u'Este programa fue ideado e implementado originalmente en 2013 el marco de la materia Fisica I '
-                    u'(Biologos y Geologos) del departamento de fisica de la facultad de ciencias exactas (df,FCEN) '
+        texto = (u'<html>'
+                    u'<center>Oscilatorio V 1.0 </center>'
+                    u'<p align="justify"> Este programa fue ideado e implementado originalmente en 2013 el marco de la materia Fisica I '
+                    u'(Biologos y Geologos) del departamento de fisica de la facultad de ciencias exactas (Df,FCEN) '
                     u'con el objetivo de realizar una practica computacional para introducir la practica de resortes '
                     u'y problemas oscilatorios. El material original (elaborado en lenguaje MATLAB) puede encontrarse '
-                    u'en la página de la materia (http://materias.df.uba.ar/f1bygAa2013c2/novedades/). \n'
-                    u'    Posteriormente, en base a las limitaciones de la interfaz gráfica del MATLAB, y las mejores '
+                    u'en la página de la materia (http://materias.df.uba.ar/f1bygAa2013c2/novedades/). </p>'
+                    u'<p align="justify"> Posteriormente, en base a las limitaciones de la interfaz gráfica del MATLAB, y las mejores '
                     u'caracteristicas que ofrece el lenguaje de programacion Python se rediseño por completo el programa '
-                    u'en este lenguaje.\n'
-                    u'    Esta version del programa fue diseñada y programada por Ionatan Perez (Ionatan@gmail.com) en '
-                    u'febrero de 2015, con la colaboración de Francisco Roldan quien revisó y corrigió el código crrespondiente '
-                    u'a los calculos matematicos en numerosas oportunidades.\n'
-                    u'    Este programa tiene como objetivo '
-                    )
-        
-        
-        
+                    u'en este lenguaje.</p>'
+                    u'<p align="justify">    Esta version del programa fue diseñada y programada por Ionatan Perez (Ionatan@gmail.com) en '
+                    u'febrero de 2015, con la colaboración de Francisco Roldan quien ayudo a revisar y corrigir el código '
+                    u'correspondiente a los calculos matematicos en numerosas oportunidades.</p>'
+                    u'<p align="justify">    Este programa tiene como objetivo servir como complemento a la enseñanza, tanto en cursos universitarios '
+                    u'como secundarios. En este sentido se permite su uso, reproducción y modificación libremente siempre y cuando '
+                    u'se cite la fuente del material.</p>'
+                    u'<p align="justify">    El codigo fuente de este programa se encuentra disponible en https://github.com/IonatanPerez/Oscilatorio '
+                    u'Cualquier sugerencia, corrección o error que se desee comunicar es bienvenida ya sea a traves de la pagina o '
+                    u'via mail (Ionatan@gmail.com).</p>'
+                    u'</html>')
                    
-        QtGui.QMessageBox.about(None, 'Como usar el programa', texto)
-          
+        QtGui.QMessageBox.about(None, 'Acerca del programa', texto)
+
+    def menu_tecnico(self):
+        texto = (u'<html>'
+                u'<center>Datos técnicos acerca del programa</center>'
+
+                u'<p align="justify"> Si estas leyendo este mensaje en una ventana de texto es porque el programa anda. Puede ser que estes ejecutando '
+                u'una version ejecutable (.exe) o bien (lo más probable) que estes compilando el codigo fuente con un interprete '
+                u'de Python. Este programa esta escrito en lenguaje Python y se distribuye mediante codigo abierto. Eso significa '
+                u'que si tenes una copia del codigo podes verlo, revisarlo y modificarlo a tu gusto. Tambien significa que podes ejecutarlo '
+                u'en tu computadora si tenes el interprete de Python, es decir el programa que sabe traducir las instruccion escritas '
+                u'en un codigo entendible por humanos en uno entendible por la computadora que estes usando.</p>'
+                
+                u'<p align="justify"> Para escribir este programa se utilizó el interprete Anaconda que incluye el editor de codigo Spider y muchos de los principales paquetes de instrucciones de Python. '
+                u'Tambien se uso PyQt4, un paquete de instrucciones extras que permiten diseñar la interfaz gráfica. Para que este programa corra se debe haber instalado ambos softwares. '
+                u'El anaconda se puede <a href=http://continuum.io/downloads>descargar de internet</a> en forma legal y gratuita y es muy facil de instalar. '
+                u'Existen diferentes versiones de Python, el presente programa fue escrito en la 2.7, por lo que se debe bajar la version compatible con dicha versión. '
+                u'Lo mismo sucede con el PyQt4 que se puede bajar desde su <a href=http://www.riverbankcomputing.co.uk/software/pyqt/download>pagina oficial</a></p>'
+
+                u'<p align="justify"> Una vez instalados ambos programas (las opciones predeterminadas de instalación configuran bien el programa si primero se instala el anaconda y luego el pyqt4), se debe abrir '
+                u'en el menu inicio el programa Spider. Con este programa se puede abrir los archivos al igual que con el word se edita un documento de texto.</p>'
+                
+                u'<p align="justify"> Este programa se distribuye en forma de tres archivos: \'Oscilatorio.py\', \'Oscilatorio.ui\' y \'Oscilatorio_ui.py\'. '
+                u'Los archivos \'.py\' poseen codigo de Python, mientras que el diseño grafico se guarda en el archivo \'.ui\'. El archivo principal es el \'Oscilatorio.py\', mientras que \'Oscilatorio_ui.py\' solo tiene '
+                u'información de la interfaz grafica en formato de instrucciones de Python. </p>'
+                
+                u'<p align="justify"> Para mirar y ejecutar este programa se debe abrir el archivo \'Oscilatorio.py\'. Una vez abierto presionando Ctrol+F5 se ejecuta. '
+                u'Tenes que tener cuidado de no modificar ninguna linea del programa (salvo que sepas lo que estas haciendo o quieras probar que pasa), porque cualquier modificación afecta el funcionamiento del programa y puede dejar de andar. '
+                u'Igual siempre podes volver a bajar la version original del codigo de donde la hayas conseguido.</p>'
+                
+                u'<p align="justify"> Python es un lenguaje sumamente versatil que permite hacer infinidad de cosas en forma relativamente sencilla. Si te interesa interiorizarte más en como usar este lenguaje '
+                u'o tenes alguna duda puntual, podes buscar en internet (hay infinidad de recursos online) o podes buscar el grupo de Python armado por alumnos de la carrera de fisica en <a href=https://www.facebook.com/groups/303815376436624>facebook</a> o la página de <a href=https://talleresfifabsas.wordpress.com>wordpress</a></p>'
+             
+                u'</html>')
+               
+        QtGui.QMessageBox.about(None, 'Datos tecnicos', texto)
     
 app = QtGui.QApplication(sys.argv)
 MainWindow = QtGui.QMainWindow()
